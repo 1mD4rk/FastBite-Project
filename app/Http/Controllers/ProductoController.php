@@ -14,6 +14,7 @@ class ProductoController extends Controller
     {
         //
         $datos = producto::all();
+        return $datos;
     }
 
     /**

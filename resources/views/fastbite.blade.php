@@ -11,5 +11,7 @@
         
         <x-barra />
 
+        <footer><x-footer /></footer>
+
     </body>
 </html>
