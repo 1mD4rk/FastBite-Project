@@ -11,5 +11,5 @@ Route::get('/', function () {
 Route::view('fastbite', 'fastbite');
 
 Route::get('prueba', function() {
-    return Producto::all();
+    return App\Models\Producto::all();
 });
