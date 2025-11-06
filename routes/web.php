@@ -8,8 +8,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('fastbite', 'fastbite');
+Route::get('fastbite', [\App\Http\Controllers\CategoriaController::class, 'index']);
 
-Route::get('prueba', function() {
-    return App\Models\Producto::all();
-});

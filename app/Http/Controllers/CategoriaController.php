@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -13,16 +12,8 @@ class CategoriaController extends Controller
     public function index()
     {
         //
-        $datos = Categoria::all();
-        return $datos;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $categorias = \App\Models\Categoria::all();
+        return view('fastbite', ['categorias' => $categorias]);
     }
 
     /**
@@ -36,15 +27,7 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
+    public function show(string $id)
     {
         //
     }
@@ -52,7 +35,7 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -60,7 +43,7 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(string $id)
     {
         //
     }

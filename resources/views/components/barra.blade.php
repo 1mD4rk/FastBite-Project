@@ -2,16 +2,22 @@
 
 <nav class="navbar navbar-expand-lg" style="background-color: {{ $bgcolor }}; padding: 0.4rem 0;">
     <div class="container-fluid" style="background-color: {{ $bgcolor }}; padding: 0.2rem 1rem;">
-        <img src="{{ Vite::asset('resources/images/LOGO.png') }}" width="56" height="43" alt="Logo">
+        <div class="d-flex align-items-center">
+            <img src="{{ Vite::asset('resources/images/hamburguer.png') }}" width="56" height="47" alt="Logo">
+            <div class="d-flex flex-column ms-3">
+                <img src="{{ Vite::asset('resources/images/fastbite.png') }}" height="38" alt="FastBite Logo">
+                <img src="{{ Vite::asset('resources/images/subtitle.png') }}" height="20" alt="Subtitle">
+            </div>
+        </div>
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#" style="color: {{ $textcolor }}; font-family: 'Josefin Sans Medium'; font-size: 18px; padding-right: 20px;">Administrator</a>
-                </li>
+                </li> -->
             </ul>
 
             <form class="d-flex" role="search" style="width: 50%;">
