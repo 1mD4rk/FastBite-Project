@@ -1,7 +1,8 @@
 @props(['bgcolor' => '#b3253c7a'])
 
 <footer class="text-light mt-5" style="background-color: {{ $bgcolor }};">
-    <div class="container py-5">
+    <div class="container py-3">
+        <br>
         <div class="row">
             <div class="col-md-4 mb-4">
                     <div class="d-flex align-items-center">

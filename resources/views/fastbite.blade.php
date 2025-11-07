@@ -1,3 +1,5 @@
+@props(['textcolor' => '#000000ff'])
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,19 +13,28 @@
         
         <x-barra />
 
-        <!-- <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-            </button>
-            <ul class="dropdown-menu">
-                @foreach ($categorias as $categoria)
-                    <li><a class="dropdown-item" href="#">{{ $categoria->nombre }}</a></li>
-                 @endforeach
-            </ul>
-        </div> -->
+            <br>
+            <div class="container my-4">
+                <h1 class="text-center" style="font-weight: bold; margin-left: 1%; color: {{ $textcolor }};">Gestion de Productos 🍔</h1>
+            </div>
 
+        
+
+             <div class="container my-5">
+                <div class="row gx-4 gy-4 justify-content-center">
+                    <!-- Iterar sobre los productos de la base de datos -->
+                    @forelse($productos as $producto)
+                        <x-moviecard :item="$producto" />
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted">No hay productos disponibles.</p>
+                        </div>
+                    @endforelse
+                </div>
+            </div>
 
         <footer><x-footer /></footer>
 
     </body>
 </html>
+
