@@ -14,7 +14,7 @@ class ProductoController extends Controller
     {
         //
         $datos = producto::all();
-        return $datos;
+        return view('fastbite', ['productos' => $datos]);
     }
 
     /**

@@ -6,8 +6,8 @@
     $name = $item->nombre; 
     $price = $item->precio; 
     $description = $item->descripcion; 
-    $category = $item->categoria; 
-    $available = is_null($item->deleted_at); // ✅ CORREGIDO - Verifica soft delete
+    $category = $item->categoriaRelacion->nombre ?? 'Sin categoría';
+    $available = is_null($item->deleted_at);
 @endphp
 
 <div class="col-sm-6 col-md-4 col-lg-3">
@@ -33,7 +33,7 @@
             <p class="card-text small text-muted mb-3">{{ $description }}</p>
 
             <div class="mt-auto d-flex justify-content-between align-items-center">
-                <div class="small text-muted">Categoría: {{ $category }}</div>
+                <div class="small text-muted">{{ $category }}</div>
 
                 <div class="d-flex gap-2">
                     <button type="button" class="btn btn-sm btn-outline-secondary" title="Editar">
