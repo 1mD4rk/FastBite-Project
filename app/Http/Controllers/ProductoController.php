@@ -13,8 +13,8 @@ class ProductoController extends Controller
     public function index()
     {
         //
-        $datos = producto::all();
-        return view('fastbite', ['productos' => $datos]);
+        $productos = producto::all();
+        return view('fastbite', compact('productos'));
     }
 
     /**
