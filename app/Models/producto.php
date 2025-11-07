@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; // ✅ AGREGADO
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Producto extends Model // Cambiar a PascalCase
+class Producto extends Model
 {
+    use SoftDeletes;
+
     public $table = 'productos';
     
     public $fillable = [
@@ -17,9 +20,6 @@ class Producto extends Model // Cambiar a PascalCase
         'imagen'
     ];
 
-    /**
-     * Relación con la categoría
-     */
     public function categoriaRelacion(): BelongsTo
     {
         return $this->belongsTo(Categoria::class, 'categoria');

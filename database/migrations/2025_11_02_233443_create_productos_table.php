@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('precio', 10, 2);
             $table->foreignId('categoria')->constrained('categorias');
             $table->string('imagen')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

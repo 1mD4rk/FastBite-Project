@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto; // Cambiar a PascalCase
+use App\Models\producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -12,9 +12,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        // Obtener todos los productos y pasarlos a la vista
-        $productos = Producto::all();
-        return view('fastbite', compact('productos'));
+        //
+        $datos = producto::all();
+        return $datos;
     }
 
     /**
@@ -36,7 +36,7 @@ class ProductoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Producto $producto)
+    public function show(producto $producto)
     {
         //
     }
@@ -44,7 +44,7 @@ class ProductoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Producto $producto)
+    public function edit(producto $producto)
     {
         //
     }
@@ -52,7 +52,7 @@ class ProductoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request, producto $producto)
     {
         //
     }
@@ -60,7 +60,7 @@ class ProductoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Producto $producto)
+    public function destroy(producto $producto)
     {
         //
     }
