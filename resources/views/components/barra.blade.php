@@ -31,7 +31,7 @@
 
             <div style="background-color: #80061B; padding: 5px 8px; border-radius: 2px; display:flex; align-items:center; gap:8px;">
                 <img src="{{ Vite::asset('resources/images/user.png') }}" width="32" height="32" alt="User" style="object-fit:cover;" />
-                <span style="color: {{ $textcolor }}; font-weight:600; font-size:0.95rem;">Adminsitrador</span>
+                <span style="color: {{ $textcolor }}; font-weight:600; font-size:0.95rem;">Administrador</span>
             </div>
         </div>
     </div>
