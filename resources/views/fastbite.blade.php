@@ -47,7 +47,6 @@
 
     <div class="container my-5">
         <div class="row gx-4 gy-4 justify-content-center">
-            <!-- Iterar sobre los productos de la base de datos -->
             @forelse($productos as $producto)
                 <x-moviecard :item="$producto" />
             @empty
