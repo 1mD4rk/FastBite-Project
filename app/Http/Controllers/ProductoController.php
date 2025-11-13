@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\producto;
+use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -13,8 +14,8 @@ class ProductoController extends Controller
     public function index()
     {
         //
-        $productos = producto::all();
-        $categorias = \App\Models\Categoria::all();
+        $productos = Producto::all();
+        $categorias = Categoria::all();
         return view('fastbite', compact('productos', 'categorias'));
     }
 
@@ -24,6 +25,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -32,6 +34,14 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+         Producto::create([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'categoria' => $request->categoria,
+        ]);
+
+        return redirect()->route('fastbite')->with('success', 'Producto creado exitosamente!');
     }
 
     /**
