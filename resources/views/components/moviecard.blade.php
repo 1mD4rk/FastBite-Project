@@ -10,8 +10,8 @@
     $available = is_null($item->deleted_at);
 @endphp
 
-<div class="col-sm-6 col-md-4 col-lg-3">
-    <div class="food-card card h-100 shadow-sm" data-id="{{ $id }}" style="border: 2px solid #B8001F; border-radius: 8px;">
+<div class="col-sm-6 col-md-4 col-lg-3 justify-content-center">
+    <div class="food-card card h-100 shadow-sm mx-auto" data-id="{{ $id }}" style="border: 2px solid #B8001F; border-radius: 8px;">
         <div class="position-relative">
             {{-- Imagen --}}
             <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:160px; background-image: url('{{ Vite::asset('resources/images/hotdog.png') }}'); background-repeat: no-repeat; background-position: center; background-size: contain;">

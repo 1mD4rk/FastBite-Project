@@ -3,10 +3,10 @@
 <nav class="navbar navbar-expand-lg" style="background-color: {{ $bgcolor }}; padding: 0.4rem 0;">
     <div class="container-fluid" style="background-color: {{ $bgcolor }}; padding: 0.2rem 1rem;">
         <div class="d-flex align-items-center">
-            <img src="{{ Vite::asset('resources/images/hamburguer.png') }}" width="56" height="47" alt="Logo">
+            <img src="{{ Vite::asset('resources/images/hamburguer.png') }}" width="46" height="37" alt="Logo">
             <div class="d-flex flex-column ms-3">
-                <img src="{{ Vite::asset('resources/images/fastbite.png') }}" height="38" alt="FastBite Logo">
-                <img src="{{ Vite::asset('resources/images/subtitle.png') }}" height="20" alt="Subtitle">
+                <img src="{{ Vite::asset('resources/images/fastbite.png') }}" height="28" alt="FastBite Logo">
+                <img src="{{ Vite::asset('resources/images/subtitle.png') }}" height="15" alt="Subtitle">
             </div>
         </div>
         <a class="navbar-brand" href="#"></a>

@@ -14,7 +14,8 @@ class ProductoController extends Controller
     {
         //
         $productos = producto::all();
-        return view('fastbite', ['productos' => $productos]);
+        $categorias = \App\Models\Categoria::all();
+        return view('fastbite', compact('productos', 'categorias'));
     }
 
     /**
