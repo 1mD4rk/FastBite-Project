@@ -39,14 +39,21 @@ class ProductoController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
-            'categoria' => 'required|exists:categorias,id'
+            'categoria' => 'required|exists:categorias,id',
+            'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120'
         ]);
+
+        $imagenPath = null;
+        if ($request->hasFile('imagen')) {
+            $imagenPath = $request->file('imagen')->store('productos', 'public');
+        }
 
          Producto::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'precio' => $request->precio,
             'categoria' => $request->categoria,
+            'imagen' => $imagenPath,
         ]);
 
         return redirect()->route('fastbite')->with('success', 'Producto creado exitosamente!');

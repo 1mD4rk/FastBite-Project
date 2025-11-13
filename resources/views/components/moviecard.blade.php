@@ -7,14 +7,18 @@
     $price = $item->precio; 
     $description = $item->descripcion; 
     $category = $item->categoriaRelacion->nombre ?? 'Sin categoría';
+    $image = $item->imagen; 
     $available = is_null($item->deleted_at);
 @endphp
 
 <div class="col-sm-6 col-md-4 col-lg-3 justify-content-center">
     <div class="food-card card h-100 shadow-sm mx-auto" data-id="{{ $id }}" style="border: 2px solid #B8001F; border-radius: 8px;">
         <div class="position-relative">
-            {{-- Imagen --}}
-            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:160px; background-image: url('{{ Vite::asset('resources/images/hotdog.png') }}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
+            
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center p-2" style="height:160px; overflow: hidden;">
+                <img src="{{ asset('storage/' . $image) }}" alt="{{ $name }}" 
+                     class="img-fluid h-100 w-100" 
+                     style="object-fit: contain;">
             </div>
 
             @if($available)
