@@ -1,7 +1,6 @@
 @props(['item', 'categorias' => []])
 
 @php
-    // Extraer datos del item (objeto Eloquent)
     $id = $item->id;
     $name = $item->nombre; 
     $price = $item->precio; 
@@ -24,14 +23,14 @@
             @if($available)
                 <span class="badge bg-success position-absolute" style="top:8px; right:8px;">Activo</span>
             @else
-                <span class="badge bg-secondary position-absolute" style="top:8px; right:8px;">Eliminado</span>
+                <span class="badge bg-secondary position-absolute" style="top:8px; right:8px;">Desactivado</span>
             @endif
         </div>
 
         <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
                 <h6 class="card-title mb-0" style="font-weight:700">{{ $name }}</h6>
-                <span class="text-primary fw-bold">{{ $price }}$</span>
+                <span class="text-primary fw-bold">${{ number_format($price, 2) }}</span>
             </div>
 
             <p class="card-text small text-muted mb-3">{{ $description }}</p>
@@ -40,22 +39,36 @@
                 <div class="small text-muted">{{ $category }}</div>
 
                 <div class="d-flex gap-2">
-                    {{-- Botón editar - ahora pasa el ID específico --}}
+                    @if($available)
                     <button type="button" class="btn btn-sm btn-outline-secondary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#editModal{{ $id }}" 
                             title="Editar">
                         ✏
                     </button>
+                    @endif
 
-                    <button type="button" class="btn btn-sm btn-outline-warning" 
+                    @if($available)
+                        <button type="button" class="btn btn-sm btn-outline-warning" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#desacModal{{ $id }}" 
+                                title="Desactivar">
+                            👁️
+                        </button>
+                    @else
+                        <button type="button" class="btn btn-sm btn-outline-success" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#activateModal{{ $id }}" 
+                                title="Activar">
+                            ✅
+                        </button>
+                    @endif
+
+                    {{-- Botón eliminar permanentemente --}}
+                    <button type="button" class="btn btn-sm btn-outline-danger" 
                             data-bs-toggle="modal" 
-                            data-bs-target="#desacModal{{ $id }}" 
-                            title="Ocultar/Mostrar">
-                        👁️
-                    </button>
-
-                    <button type="button" class="btn btn-sm btn-outline-danger" title="Eliminar">
+                            data-bs-target="#deleteModal{{ $id }}" 
+                            title="Eliminar Permanentemente">
                         🗑️
                     </button>
                 </div>
@@ -65,6 +78,7 @@
 </div>
 
 <!-- Modal editar -->
+@if($available)
 <div class="modal fade" id="editModal{{ $id }}" tabindex="-1" 
      aria-labelledby="editModalLabel{{ $id }}" aria-hidden="true" 
      data-bs-backdrop="static">
@@ -141,8 +155,10 @@
     </div>
   </div>
 </div>
+@endif
 
-<!-- Modal desactivar o desactivar -->
+<!-- Modal desactivar -->
+@if($available)
 <div class="modal fade" id="desacModal{{ $id }}" tabindex="-1" aria-labelledby="desacModal{{ $id }}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border: 5px solid #B8001F; border-radius: 8px;">
@@ -153,16 +169,86 @@
       </div>
       
       <div class="modal-body">
-        <p>¿Desea desactivar este producto: {{ $name }}?</p>
+        <p>¿Está seguro que desea desactivar el producto: <strong>{{ $name }}</strong>?</p>
+        <p class="text-muted">El producto se ocultará pero podrá ser reactivado después.</p>
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning">Aceptar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form action="{{ route('productos.destroy', $id) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-warning">Desactivar</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+@endif
 
+<!-- Modal activar -->
+@if(!$available)
+<div class="modal fade" id="activateModal{{ $id }}" tabindex="-1" aria-labelledby="activateModal{{ $id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 5px solid #B8001F; border-radius: 8px;">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="activateModal{{ $id }}">Activar Producto: {{ $name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <p>¿Está seguro que desea activar el producto: <strong>{{ $name }}</strong>?</p>
+        <p class="text-muted">El producto volverá a estar visible para los clientes.</p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form action="{{ route('productos.restore', $id) }}" method="POST">
+          @csrf
+          @method('PATCH')
+          <button type="submit" class="btn btn-success">Activar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
 
-<!-- Modal eliminar total -->
+<!-- Modal eliminar permanentemente -->
+<div class="modal fade" id="deleteModal{{ $id }}" tabindex="-1" aria-labelledby="deleteModal{{ $id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 5px solid #dc3545; border-radius: 8px;">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModal{{ $id }}">
+          @if($available)
+            Eliminar Permanentemente: {{ $name }}
+          @else
+            Eliminar Producto Desactivado: {{ $name }}
+          @endif
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        @if($available)
+          <p class="text-danger"><strong>¡Advertencia!</strong> Está a punto de eliminar permanentemente el producto: <strong>{{ $name }}</strong></p>
+          <p>Esta acción no se puede deshacer y se perderá toda la información del producto.</p>
+        @else
+          <p class="text-danger"><strong>¡Advertencia!</strong> Está a punto de eliminar permanentemente el producto desactivado: <strong>{{ $name }}</strong></p>
+          <p>Esta acción no se puede deshacer.</p>
+        @endif
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form action="{{ route('productos.forceDelete', $id) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Eliminar Permanentemente</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

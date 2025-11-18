@@ -14,7 +14,7 @@ class ProductoController extends Controller
     public function index()
     {
         //
-        $productos = Producto::all();
+        $productos = Producto::withTrashed()->with('categoriaRelacion')->get();
         $categorias = Categoria::all();
         return view('fastbite', compact('productos', 'categorias'));
     }
@@ -112,8 +112,37 @@ class ProductoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(producto $producto)
+    public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('fastbite')->with('success', 'Producto desactivado exitosamente!');
+    }
+
+    /**
+     * Restaurar producto desactivado.
+     */
+    public function restore($id)
+    {
+        $producto = Producto::withTrashed()->findOrFail($id);
+        $producto->restore();
+        
+        return redirect()->route('fastbite')->with('success', 'Producto activado exitosamente!');
+    }
+
+    /**
+     * Eliminación permanente.
+     */
+    public function forceDelete($id)
+    {
+        $producto = Producto::withTrashed()->findOrFail($id);
+        
+        // Eliminar imagen si existe
+        if ($producto->imagen && \Storage::disk('public')->exists($producto->imagen)) {
+            \Storage::disk('public')->delete($producto->imagen);
+        }
+        
+        $producto->forceDelete();
+        
+        return redirect()->route('fastbite')->with('success', 'Producto eliminado permanentemente!');
     }
 }

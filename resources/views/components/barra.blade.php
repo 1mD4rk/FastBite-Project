@@ -1,6 +1,6 @@
 @props(['bgcolor' => '#B8001F', 'textcolor' => '#FFFFFF'])
 
-<nav class="navbar navbar-expand-lg" style="background-color: {{ $bgcolor }}; padding: 0.4rem 0;">
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: {{ $bgcolor }}; padding: 0.4rem 0;">
     <div class="container-fluid" style="background-color: {{ $bgcolor }}; padding: 0.2rem 1rem;">
         <div class="d-flex align-items-center">
             <img src="{{ Vite::asset('resources/images/hamburguer.png') }}" width="46" height="37" alt="Logo">
