@@ -81,6 +81,32 @@ class ProductoController extends Controller
     public function update(Request $request, producto $producto)
     {
         //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'precio' => 'required|numeric|min:0',
+            'categoria' => 'required|exists:categorias,id',
+            'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120'
+        ]);
+
+        $imagenPath = $producto->imagen;
+        if ($request->hasFile('imagen')) {
+            // Eliminar imagen anterior si existe
+            if ($imagenPath && \Storage::disk('public')->exists($imagenPath)) {
+                \Storage::disk('public')->delete($imagenPath);
+            }
+            $imagenPath = $request->file('imagen')->store('productos', 'public');
+        }
+
+        $producto->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'categoria' => $request->categoria,
+            'imagen' => $imagenPath,
+        ]);
+
+        return redirect()->route('fastbite')->with('success', 'Producto actualizado exitosamente!');
     }
 
     /**
@@ -89,5 +115,7 @@ class ProductoController extends Controller
     public function destroy(producto $producto)
     {
         //
+         $producto->delete();
+        return redirect()->route('fastbite')->with('success', 'Producto eliminado exitosamente!');
     }
 }

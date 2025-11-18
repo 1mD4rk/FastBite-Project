@@ -44,11 +44,10 @@
         <x-modalcreate :categorias="$categorias" />
     </div>
    
-
     <div class="container my-5">
         <div class="row gx-4 gy-4 justify-content-center">
             @forelse($productos as $producto)
-                <x-moviecard :item="$producto" />
+                <x-moviecard :item="$producto" :categorias="$categorias" />
             @empty
                 <div class="col-12 text-center">
                     <p class="text-muted">No hay productos disponibles.</p>
