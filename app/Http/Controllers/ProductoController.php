@@ -115,7 +115,5 @@ class ProductoController extends Controller
     public function destroy(producto $producto)
     {
         //
-         $producto->delete();
-        return redirect()->route('fastbite')->with('success', 'Producto eliminado exitosamente!');
     }
 }

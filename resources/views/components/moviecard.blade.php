@@ -48,7 +48,10 @@
                         ✏
                     </button>
 
-                    <button type="button" class="btn btn-sm btn-outline-warning" title="Ocultar/Mostrar">
+                    <button type="button" class="btn btn-sm btn-outline-warning" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#desacModal{{ $id }}" 
+                            title="Ocultar/Mostrar">
                         👁️
                     </button>
 
@@ -139,8 +142,27 @@
   </div>
 </div>
 
-<!-- Modal desactivar -->
- 
+<!-- Modal desactivar o desactivar -->
+<div class="modal fade" id="desacModal{{ $id }}" tabindex="-1" aria-labelledby="desacModal{{ $id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 5px solid #B8001F; border-radius: 8px;">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="desacModal{{ $id }}">Desactivar Producto: {{ $name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <p>¿Desea desactivar este producto: {{ $name }}?</p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-warning">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Modal eliminar total -->
