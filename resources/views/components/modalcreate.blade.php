@@ -1,7 +1,29 @@
 @props(['categorias' => []])
 
+<style>
+
+.aniadir {
+    background-color: #B8001F;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.aniadir:hover {
+    background-color: #e1193aff;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.aniadir:clicked {
+    background-color: #9c0019ff;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+</style>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn aniadir" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + Añadir Producto
 </button>
 

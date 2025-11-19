@@ -79,9 +79,7 @@
 
 <!-- Modal editar -->
 @if($available)
-<div class="modal fade" id="editModal{{ $id }}" tabindex="-1" 
-     aria-labelledby="editModalLabel{{ $id }}" aria-hidden="true" 
-     data-bs-backdrop="static">
+<div class="modal fade" id="editModal{{ $id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $id }}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border: 5px solid #B8001F; border-radius: 8px;">
       <form action="{{ route('productos.update', $id) }}" method="POST" enctype="multipart/form-data">
