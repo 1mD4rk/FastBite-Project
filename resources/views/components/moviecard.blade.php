@@ -81,13 +81,13 @@
 @if($available)
 <div class="modal fade" id="editModal{{ $id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $id }}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="border: 5px solid #B8001F; border-radius: 8px;">
+    <div class="modal-content rounded-3 shadow" style="border: 5px solid #B8001F; border-radius: 5px;">
       <form action="{{ route('productos.update', $id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editModalLabel{{ $id }}">
+          <h1 class="modal-title fs-5 fw-bold" id="editModalLabel{{ $id }}">
             Editar Producto: {{ $name }}
           </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -95,22 +95,22 @@
         
         <div class="modal-body">
           <div class="row g-3">
-            <div class="col-md-6">
+            <div class="col-12">
               <label for="inputNameP{{ $id }}" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="inputNameP{{ $id }}" name="nombre" 
+              <input type="text" class="form-control rounded-2" id="inputNameP{{ $id }}" name="nombre" 
                      value="{{ $name }}" required>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-12">
               <label for="inputDesc{{ $id }}" class="form-label">Descripción</label>
-              <textarea class="form-control" id="inputDesc{{ $id }}" rows="3" name="descripcion">{{ $description }}</textarea>
+              <textarea class="form-control rounded-2" id="inputDesc{{ $id }}" rows="3" name="descripcion">{{ $description }}</textarea>
             </div>
 
             <div class="col-md-6">
               <label for="inputPrecio{{ $id }}" class="form-label">Precio</label>
               <div class="input-group">
-                <span class="input-group-text">$</span>
-                <input type="number" class="form-control" id="inputPrecio{{ $id }}" min="0" step="0.01" 
+                <span class="input-group-text bg-light rounded-start-2">$</span>
+                <input type="number" class="form-control rounded-end-2" id="inputPrecio{{ $id }}" min="0" step="0.01" 
                        placeholder="0.00" name="precio" 
                        value="{{ $price }}" required>
               </div>
@@ -118,7 +118,7 @@
 
             <div class="col-md-6">
               <label for="inputCatg{{ $id }}" class="form-label">Categoría</label>
-              <select class="form-select" id="inputCatg{{ $id }}" name="categoria" required>
+              <select class="form-select rounded-2" id="inputCatg{{ $id }}" name="categoria" required>
                 <option value="" disabled>Seleccionar...</option>
                 @foreach($categorias as $categoria)
                   <option value="{{ $categoria->id }}" 
@@ -129,25 +129,23 @@
               </select>
             </div>
 
-            <div class="mb-3">
+            <div class="col-12">
               <label for="formFile{{ $id }}" class="form-label">Imagen del producto</label>
-              <input class="form-control" type="file" id="formFile{{ $id }}" 
+              <input class="form-control rounded-2" type="file" id="formFile{{ $id }}" 
                     accept=".png, .jpg, .jpeg, .webp"
                     aria-describedby="fileHelp{{ $id }}" name="imagen">
               <div id="fileHelp{{ $id }}" class="form-text">
                 Formatos aceptados: PNG, JPG, JPEG, WEBP. Tamaño máximo: 5MB
                 @if($image)
-                  <br>Imagen actual: <a href="{{ asset('storage/' . $image) }}" target="_blank">{{ basename($image) }}</a>
+                  <br>Imagen actual: <a href="{{ asset('storage/' . $image) }}" target="_blank" class="text-decoration-none">{{ basename($image) }}</a>
                 @endif
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success">
-            Actualizar Producto
-          </button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success">Actualizar Producto</button>
         </div>
       </form>
     </div>
