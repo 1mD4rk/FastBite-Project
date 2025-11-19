@@ -28,7 +28,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-3 shadow" style="border: 5px solid #B8001F; border-radius: 5px;">
       <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
@@ -79,8 +79,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success rounded-pill">Crear Producto</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success">Crear Producto</button>
         </div>
       </form>
     </div>
