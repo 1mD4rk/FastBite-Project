@@ -56,9 +56,7 @@
               <label for="inputPrecio" class="form-label">Precio <span class="text-danger">*</span></label>
               <div class="input-group">
                 <span class="input-group-text bg-light rounded-start-2">$</span>
-                <input type="number" class="form-control rounded-end-2" id="inputPrecio" 
-                       min="0.01" max="9999.99" step="0.01" placeholder="0.00" 
-                       name="precio" required>
+                <input type="number" class="form-control rounded-end-2" id="inputPrecio" min="0.01" max="9999.99" step="0.01" placeholder="0.00" name="precio" required>
               </div>
               <div class="invalid-feedback">El precio debe ser un número válido entre $0.01 y $9999.99.</div>
             </div>
