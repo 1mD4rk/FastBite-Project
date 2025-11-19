@@ -35,13 +35,29 @@ class ProductoController extends Controller
     {
         //
 
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric|min:0',
-            'categoria' => 'required|exists:categorias,id',
-            'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120'
-        ]);
+        $validated = $request->validate([
+        'nombre' => 'required|string|min:2|max:100|regex:/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/',
+        'descripcion' => 'nullable|string|max:500',
+        'precio' => 'required|numeric|min:0.01|max:9999.99',
+        'categoria' => 'required|exists:categorias,id',
+        'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120', // 5MB
+    ], [
+        'nombre.required' => 'El nombre del producto es obligatorio.',
+        'nombre.min' => 'El nombre debe tener al menos 2 caracteres.',
+        'nombre.max' => 'El nombre no puede tener más de 100 caracteres.',
+        'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
+        'descripcion.required' => 'La descripción no puede exceder los 500 caracteres.',
+        'descripcion.max' => 'La descripción es obligatorio.',
+        'precio.required' => 'El precio es obligatorio.',
+        'precio.numeric' => 'El precio debe ser un número válido.',
+        'precio.min' => 'El precio debe ser al menos $0.01.',
+        'precio.max' => 'El precio no puede exceder $9999.99.',
+        'categoria.required' => 'La categoría es obligatoria.',
+        'categoria.exists' => 'La categoría seleccionada no es válida.',
+        'imagen.image' => 'El archivo debe ser una imagen válida.',
+        'imagen.mimes' => 'Solo se permiten archivos PNG, JPG, JPEG y WEBP.',
+        'imagen.max' => 'La imagen no puede pesar más de 5MB.',
+    ]);
 
         $imagenPath = null;
         if ($request->hasFile('imagen')) {
