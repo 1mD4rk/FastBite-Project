@@ -73,7 +73,7 @@
             </div>
 
             <div class="col-12">
-              <label for="formFile" class="form-label">Imagen del producto</label>
+              <label for="formFile" class="form-label">Imagen del producto <span class="text-danger">*</span></label>
               <input class="form-control rounded-2" type="file" id="formFile" accept=".png, .jpg, .jpeg, .webp" aria-describedby="fileHelp" name="imagen">
               <div id="fileHelp" class="form-text">
                 Formatos aceptados: PNG, JPG, JPEG, WEBP. Tamaño máximo: 5MB

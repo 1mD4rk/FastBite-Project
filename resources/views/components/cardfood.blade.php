@@ -20,27 +20,42 @@
                      style="object-fit: contain;">
             </div>
 
-            @if($available)
-                <span class="badge bg-success position-absolute" style="top:8px; right:8px;">Activo</span>
-            @else
-                <span class="badge bg-secondary position-absolute" style="top:8px; right:8px;">Desactivado</span>
-            @endif
+            <div class="position-absolute bottom-0 start-0 m-2">
+                <span class="badge bg-dark bg-opacity-75 text-white fs-6 px-3 py-2">
+                    ${{ number_format($price, 2) }}
+                </span>
+            </div>
         </div>
 
         <div class="card-body d-flex flex-column">
+          <div class="mb-2">
+                <span class="badge text-bg-danger bg-opacity-75">
+                    {{ $category }}
+                </span>
+          </div>
+
             <div class="d-flex justify-content-between align-items-start mb-2">
-                <h6 class="card-title mb-0" style="font-weight:700">{{ $name }}</h6>
-                <span class="text-primary fw-bold">${{ number_format($price, 2) }}</span>
+                <h6 class="card-title mb-0 fs-4" style="font-weight:700">{{ $name }}</h6>
             </div>
 
             <p class="card-text small text-muted mb-3">{{ $description }}</p>
 
-            <div class="mt-auto d-flex justify-content-between align-items-center">
-                <div class="small text-muted">{{ $category }}</div>
-
-                <div class="d-flex gap-2">
+          <div class="mt-auto d-flex justify-content-between align-items-center border-top pt-3">
+              <div>
+                  @if($available)
+                  <span class="badge bg-success bg-opacity-10 text-success border border-success fs-6 px-3 py-2">
+                      <i class="fas fa-check-circle"></i> Activo
+                  </span>
+                  @else
+                  <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary fs-6 px-3 py-2">
+                      <i class="fas fa-eye-slash"></i> Desactivado
+                  </span>
+                  @endif
+              </div>
+  
+              <div class="d-flex gap-2">
                     @if($available)
-                    <button type="button" class="btn btn-sm btn-outline-secondary" 
+                    <button type="button" class="btn btn-sm btn-outline-secondary fs-6" 
                             data-bs-toggle="modal" 
                             data-bs-target="#editModal{{ $id }}" 
                             title="Editar">
