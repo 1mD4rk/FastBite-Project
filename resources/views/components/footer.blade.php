@@ -37,6 +37,7 @@
         </div>
 
         <div class="border-top border-danger-subtle text-center small text-light">
+            <br>
             &copy; {{ date('Y') }} FastBite. Todos los derechos reservados.
         </div>
     </div>

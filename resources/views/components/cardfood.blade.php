@@ -64,14 +64,14 @@
                     @endif
 
                     @if($available)
-                        <button type="button" class="btn btn-sm btn-outline-warning" 
+                        <button type="button" class="btn btn-sm btn-outline-warning fs-6" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#desacModal{{ $id }}" 
                                 title="Desactivar">
                             👁️
                         </button>
                     @else
-                        <button type="button" class="btn btn-sm btn-outline-success" 
+                        <button type="button" class="btn btn-sm btn-outline-success fs-6" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#activateModal{{ $id }}" 
                                 title="Activar">
@@ -80,7 +80,7 @@
                     @endif
 
                     {{-- Botón eliminar permanentemente --}}
-                    <button type="button" class="btn btn-sm btn-outline-danger" 
+                    <button type="button" class="btn btn-sm btn-outline-danger fs-6" 
                             data-bs-toggle="modal" 
                             data-bs-target="#deleteModal{{ $id }}" 
                             title="Eliminar Permanentemente">
