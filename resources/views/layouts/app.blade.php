@@ -36,16 +36,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     @auth
-                    <form class="d-flex me-3" role="search" style="width: 40%;">
-                        <div class="input-group">
-                            <input class="form-control rounded-pill border-0 shadow-sm" type="search" placeholder="Buscar productos..." aria-label="Buscar" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
-                            <button type="submit" class="btn btn-link text-dark position-absolute end-0 top-50 translate-middle-y me-2" aria-label="Buscar" style="width: 36px; height: 36px; display:flex; align-items:center; justify-content:center; padding: 0;">
-                                <img src="{{ Vite::asset('resources/images/search.png') }}" width="20" height="20" alt="Search">
-                            </button>
-                        </div>
-                    </form>
+                    <!-- Barra de búsqueda centrada -->
+                    <div class="d-flex justify-content-center flex-grow-1 mx-3">
+                        <form class="w-100" role="search" style="max-width: 500px;">
+                            <div class="input-group">
+                                <input class="form-control rounded-pill border-0 shadow-sm" type="search" placeholder="Buscar productos..." aria-label="Buscar" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                <button type="submit" class="btn btn-link text-dark position-absolute end-0 top-50 translate-middle-y me-2" aria-label="Buscar" style="width: 36px; height: 36px; display:flex; align-items:center; justify-content:center; padding: 0;">
+                                    <img src="{{ Vite::asset('resources/images/search.png') }}" width="20" height="20" alt="Search">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     
-                    <div class="nav-item dropdown ms-auto">
+                    <!-- Dropdown del usuario alineado a la derecha -->
+                    <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
                             <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded-pill px-3 py-1">
                                 <img src="{{ Vite::asset('resources/images/user.png') }}" width="32" height="32" alt="User" class="rounded-circle" />
@@ -75,18 +79,20 @@
                     @endauth
                     
                     @guest
-                    <!-- Authentication Links -->
-                    @if (Route::has('login'))
-                    <div class="d-flex ms-auto me-3 fs-5">
-                        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </div>
-                    @endif
+                    <!-- Authentication Links para usuarios no autenticados -->
+                    <div class="d-flex align-items-center ms-auto">
+                        @if (Route::has('login'))
+                        <div class="me-3">
+                            <a class="nav-link text-white fs-5" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </div>
+                        @endif
 
-                    @if (Route::has('register'))
-                    <div class="d-flex ms-2 me-1 fs-5">
-                        <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @if (Route::has('register'))
+                        <div>
+                            <a class="nav-link text-white fs-5" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </div>
+                        @endif
                     </div>
-                    @endif
                     @endguest
                 </div>
             </div>
