@@ -14,7 +14,7 @@ class CategoriaSeeder extends Seeder
     {
         //
         // \App\Models\Categoria::factory()->count(10)->create();
-        $categorias = ['Bebidas', 
+        $categorias = [ 
         'Hamburguesas',
         'Papas Fritas',
         'Hot Dogs',
