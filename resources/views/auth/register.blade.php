@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+<head>
+    <title>FastBite - Register</title>
+    <link href="{{ Vite::asset('resources/images/hamburguer.png') }}" rel="icon">
+</head>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
