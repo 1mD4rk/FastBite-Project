@@ -19,6 +19,5 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/productos/{id}/restore', [ProductoController::class, 'restore'])->name('productos.restore');
     Route::delete('/productos/{id}/force-delete', [ProductoController::class, 'forceDelete'])->name('productos.forceDelete');
     
-    // Si quieres mantener el nombre 'fastbite' para tu dashboard principal
     Route::get('/dashboard', [ProductoController::class, 'index'])->name('fastbite');
 });
