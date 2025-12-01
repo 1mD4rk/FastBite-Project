@@ -7,3 +7,10 @@ Route::get('/', [ProductoController::class, 'index'])->name('fastbite');
 Route::resource('productos', ProductoController::class);
 Route::patch('/productos/{id}/restore', [ProductoController::class, 'restore'])->name('productos.restore');
 Route::delete('/productos/{id}/force-delete', [ProductoController::class, 'forceDelete'])->name('productos.forceDelete');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
