@@ -45,7 +45,7 @@
     </div>
    
     <div class="container my-5">
-        <div class="row gx-4 gy-4 justify-content-center">
+        <div class="row gx-4 gy-4">
             @forelse($productos as $producto)
                 <x-cardfood :item="$producto" :categorias="$categorias" />
             @empty
