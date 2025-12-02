@@ -7,6 +7,7 @@
     $description = $item->descripcion; 
     $category = $item->categoriaRelacion->nombre ?? 'Sin categoría';
     $image = $item->imagen; 
+    $tamanio = $item->tamano; 
     $available = is_null($item->deleted_at);
 @endphp
 
@@ -31,6 +32,9 @@
           <div class="mb-2">
                 <span class="badge text-bg-danger bg-opacity-75">
                     {{ $category }}
+                </span>
+                <span class="badge text-bg-secondary bg-opacity-75">
+                    {{ $tamanio }}
                 </span>
           </div>
 
