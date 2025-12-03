@@ -33,9 +33,11 @@
                 <span class="badge text-bg-danger bg-opacity-75">
                     {{ $category }}
                 </span>
+                @if($tamanio)
                 <span class="badge text-bg-secondary bg-opacity-75">
                     {{ $tamanio }}
                 </span>
+                @endif
           </div>
 
             <div class="d-flex justify-content-between align-items-start mb-2">

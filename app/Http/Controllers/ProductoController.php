@@ -44,7 +44,7 @@ class ProductoController extends Controller
             'descripcion' => 'required|string|max:500',
             'categoria_con_tamano' => 'required|exists:categorias,id',
             'precio_con' => 'required|numeric|min:0.01|max:9999.99',
-            'tamano_con' => 'required|string|in:pequenio,mediano,grande,familiar,personal',
+            'tamano_con' => 'required|string|in:pequenio,mediano,grande,familiar,personal,Pequeño,Mediano,Grande,Familiar,Personal',
             'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120',
         ];
     } else {
