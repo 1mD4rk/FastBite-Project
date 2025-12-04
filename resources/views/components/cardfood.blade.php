@@ -22,8 +22,8 @@
             </div>
 
             <div class="position-absolute bottom-0 start-0 m-2">
-                <span class="badge bg-dark bg-opacity-75 text-white fs-6 px-3 py-2">
-                    ${{ number_format($price, 2) }}
+                <span class="badge bg-success bg-opacity-75 text-white fs-6 px-3 py-2">
+                    {{ number_format($price, 2) }} $
                 </span>
             </div>
         </div>

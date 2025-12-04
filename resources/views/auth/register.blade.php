@@ -33,7 +33,7 @@
 
                         <div class="row mb-3 justify-content-center">
                             <div class="col-md-8">
-                                <label for="email" class="form-label d-block">{{ __('Correo electronico') }}</label>
+                                <label for="email" class="form-label d-block">{{ __('Correo electrónico') }}</label>
 
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
