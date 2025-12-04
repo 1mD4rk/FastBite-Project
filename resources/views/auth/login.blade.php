@@ -4,32 +4,34 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header"><br><p class="d-flex justify-content-center fs-3">{{ __('Login') }}</p></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-md-8">
+                                <label for="name" class="form-label">{{ __('Nombre de Usuario') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')  <!-- CAMBIADO de 'email' a 'name' -->
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-md-8">
+                                <label for="password" class="form-label">{{ __('Contraseña') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -40,31 +42,42 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-md-5">
+                                <div class="form-check text-center">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Recuérdame') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-md-9 text-center">
                                 <button type="submit" class="btn btn-danger">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-secondary" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
+                    
+                        <div class="row mb-0 justify-content-center">
+                            <div class="col-md-8 text-center">
+                                <a class="link-danger link-underline-danger" href="{{ route('password.request') }}">
+                                    {{ __('¿Olvidaste tu contraseña?') }}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0 justify-content-center">
+                            <div class="col-md-8 text-center">
+                                <a class="link-danger link-underline-danger" href="{{ route('register') }}">
+                                    {{ __('¿No tienes cuenta?') }}
+                                </a>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
