@@ -217,7 +217,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
         <form action="{{ route('productos.destroy', $id) }}" method="POST">
           @csrf
           @method('DELETE')
@@ -246,7 +246,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
         <form action="{{ route('productos.restore', $id) }}" method="POST">
           @csrf
           @method('PATCH')
@@ -285,7 +285,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
         <form action="{{ route('productos.forceDelete', $id) }}" method="POST">
           @csrf
           @method('DELETE')
