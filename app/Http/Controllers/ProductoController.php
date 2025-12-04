@@ -152,7 +152,7 @@ class ProductoController extends Controller
             'descripcion' => $request->descripcion,
             'precio' => $request->precio,
             'categoria' => $request->categoria,
-            'tamano' => $request->tamano, // CAMBIADO: 'tamano' => $request->tamano
+            'tamano' => $request->tamano, 
             'imagen' => $imagenPath,
         ]);
 
