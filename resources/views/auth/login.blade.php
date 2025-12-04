@@ -57,7 +57,7 @@
                         <div class="row mb-3 justify-content-center">
                             <div class="col-md-9 text-center">
                                 <button type="submit" class="btn btn-danger">
-                                    {{ __('Login') }}
+                                    {{ __('Ingresar') }}
                                 </button>
                             </div>
                         </div>

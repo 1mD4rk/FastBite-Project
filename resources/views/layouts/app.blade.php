@@ -83,7 +83,7 @@
                     <div class="d-flex align-items-center ms-auto">
                         @if (Route::has('login'))
                         <div class="me-3">
-                            <a class="nav-link text-white fs-5" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-white fs-5" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                         </div>
                         @endif
 
