@@ -124,14 +124,17 @@ class ProductoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, producto $producto)
-    {
+    /**
+ * Update the specified resource in storage.
+ */
+    public function update(Request $request, producto $producto){
         //
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'categoria' => 'required|exists:categorias,id',
+            'tamano' => 'nullable|string|in:pequenio,mediano,grande,familiar,personal', // CAMBIADO a 'tamano'
             'imagen' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:5120'
         ]);
 
@@ -149,6 +152,7 @@ class ProductoController extends Controller
             'descripcion' => $request->descripcion,
             'precio' => $request->precio,
             'categoria' => $request->categoria,
+            'tamano' => $request->tamano, // CAMBIADO: 'tamano' => $request->tamano
             'imagen' => $imagenPath,
         ]);
 

@@ -34,9 +34,21 @@
                     {{ $category }}
                 </span>
                 @if($tamanio)
-                <span class="badge text-bg-secondary bg-opacity-75">
-                    {{ $tamanio }}
-                </span>
+                    <span class="badge text-bg-secondary bg-opacity-75">
+                        @if($tamanio == 'pequenio')
+                            Pequeño
+                        @elseif($tamanio == 'mediano')
+                            Mediano
+                        @elseif($tamanio == 'grande')
+                            Grande
+                        @elseif($tamanio == 'familiar')
+                            Familiar
+                        @elseif($tamanio == 'personal')
+                            Personal
+                        @else
+                            {{ $tamanio }} {{-- Muestra el valor original si no coincide con ninguno --}}
+                        @endif
+                    </span>
                 @endif
           </div>
 
@@ -150,6 +162,20 @@
               </select>
             </div>
 
+            @if($tamanio)
+            <div class="col-md-12">
+              <label for="inputTamanio{{ $id }}" class="form-label">Tamaño (Opcional)</label>
+              <select class="form-select rounded-2" id="inputTamanio{{ $id }}" name="tamano">
+                <option value="" selected disabled>Seleccione...</option>
+                <option value="pequenio" {{ $tamanio == 'pequenio' ? 'selected' : '' }}>Pequeño</option>
+                <option value="mediano" {{ $tamanio == 'mediano' ? 'selected' : '' }}>Mediano</option>
+                <option value="grande" {{ $tamanio == 'grande' ? 'selected' : '' }}>Grande</option>
+                <option value="familiar" {{ $tamanio == 'familiar' ? 'selected' : '' }}>Familiar</option>
+                <option value="personal" {{ $tamanio == 'personal' ? 'selected' : '' }}>Personal</option>
+              </select>
+            </div>
+            @endif
+
             <div class="col-12">
               <label for="formFile{{ $id }}" class="form-label">Imagen del producto</label>
               <input class="form-control rounded-2" type="file" id="formFile{{ $id }}" 
@@ -166,7 +192,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success">Actualizar Producto</button>
+          <button type="submit" class="btn btn-secondary">Actualizar Producto</button>
         </div>
       </form>
     </div>

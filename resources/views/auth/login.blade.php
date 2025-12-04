@@ -21,7 +21,7 @@
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong>{{ __('El usuario o la contraseña no coinciden.') }}</strong>
                                         </span>
                                     @enderror
                                 </div>
